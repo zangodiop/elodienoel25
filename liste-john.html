@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste de Noël 2025 — Pour John</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0d1117;
+      --card-bg: rgba(30, 41, 59, 0.4);
+      --card-border: rgba(71, 85, 105, 0.3);
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --glow-blue: rgba(59, 130, 246, 0.4);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px 60px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      color: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+      }
+      50% {
+        box-shadow: 0 4px 30px rgba(59, 130, 246, 0.6);
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 50%, var(--accent-emerald) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      text-shadow: 0 0 80px rgba(59, 130, 246, 0.5);
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .update-notice {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--accent-cyan);
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      margin-top: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .update-notice::before {
+      content: '🔄';
+      font-size: 1.2em;
+      animation: rotate 3s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 36px;
+      position: relative;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-emerald));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--glow-blue) 0%, transparent 70%);
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.5s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card:hover::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .card:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 60px var(--glow-blue);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      display: inline-block;
+      filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
+      transition: all 0.4s ease;
+    }
+
+    .card:hover .card-icon {
+      transform: scale(1.15) rotate(-5deg);
+      filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.5));
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .card-description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+      padding-left: 16px;
+      border-left: 2px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 14px 28px;
+      background: rgba(6, 182, 212, 0.1);
+      border: 2px solid rgba(6, 182, 212, 0.3);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      margin-top: 12px;
+    }
+
+    .card-link::after {
+      content: '→';
+      transition: transform 0.3s ease;
+    }
+
+    .card-link:hover {
+      background: rgba(6, 182, 212, 0.2);
+      border-color: var(--accent-cyan);
+      transform: translateX(4px);
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+    }
+
+    .card-link:hover::after {
+      transform: translateX(4px);
+    }
+
+    .free-choice {
+      display: inline-block;
+      color: var(--text-secondary);
+      padding: 10px 18px;
+      margin-top: 12px;
+      font-size: 0.95rem;
+      border-left: 3px solid rgba(16, 185, 129, 0.6);
+      background: rgba(16, 185, 129, 0.08);
+      border-radius: 6px;
+      font-style: italic;
+    }
+
+    .free-choice::after {
+      content: ' — Choix libre';
+      color: var(--accent-emerald);
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    .special-note {
+      background: rgba(251, 191, 36, 0.1);
+      border-left: 3px solid #fbbf24;
+      color: #fcd34d;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      border-top: 1px solid var(--card-border);
+      margin-top: 80px;
+    }
+
+    footer p {
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Animation au scroll */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-60px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(60px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    .card.scroll-reveal {
+      opacity: 0;
+    }
+
+    .card.scroll-reveal.revealed {
+      animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .card.scroll-reveal:nth-child(even).revealed {
+      animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 16px;
+      }
+      
+      header {
+        padding: 80px 16px 40px;
+        margin-bottom: 40px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .card {
+        padding: 28px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Scrollbar personnalisée */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--card-border);
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(59, 130, 246, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-badge">Mise à jour régulière</div>
+      <h1>Liste de Noël 2025</h1>
+      <p class="subtitle">Pour John 🎯</p>
+      <div class="update-notice">Cette liste est mise à jour régulièrement — Pensez à revenir !</div>
+    </header>
+
+    <div class="grid">
+      <!-- ARBALÈTE -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">🏹</div>
+          <h3>Arbalète de chasse Hori Zone de Luxe Rage X</h3>
+          <p class="card-description">Pour abattre un chameau à 5km par vent fort</p>
+          <a href="https://www.heraclesarcherie.fr/arbalete-classique/hori-zone-de-luxe-rage-x-detail" target="_blank" class="card-link">Voir le produit</a>
+        </div>
+      </div>
+
+      <!-- CHAUSSURES TENNIS -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">🎾</div>
+          <h3>Chaussures Tennis Head Sprint Team 3.5 Homme</h3>
+          <p class="card-description">Pour ramener l'US Open à Pusignan</p>
+          <a href="https://www.sportsraquettes.fr/chaussures-tennis-head/14594-chaussures-tennis-head-sprint-team-35-toutes-surfaces-homme-vert.html" target="_blank" class="card-link">Voir le produit</a>
+        </div>
+      </div>
+
+      <!-- LENTILLES VR -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">🥽</div>
+          <h3>Lentilles Zenni à ma vue pour Meta Quest 3</h3>
+          <p class="card-description">Pour éviter de me trimballer mon Labrador quand j'utilise mon casque VR</p>
+          <div class="special-note">
+            <strong>AVEC Prescription médicale :</strong><br>
+            œil droit : SPH = -4,75 CYL= -1,00 Axe = 5º<br>
+            œil gauche : SPH = -4,50 CYL= -2,25 Axe = 5º<br>
+            <em>Avec l'option "Revêtement résistant à l'huile" (c'est gratuit !)</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- POÊLE DE BUYER -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">🍳</div>
+          <h3>Poêle à frire en inox PRIM'APPETY Ø32cm De Buyer</h3>
+          <p class="card-description">Avec son inox AISI 304 (18% de chrome, 8% de nickel), je pourrai éventuellement vous inviter à manger la côte de boeuf sans perturbateurs endocriniens et en préservant votre santé</p>
+          <a href="https://www.debuyer.com/fr/poele-a-frire-en-inox-primappety-724.html" target="_blank" class="card-link">Voir le produit</a>
+        </div>
+      </div>
+
+      <!-- MACBOOK PRO -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">💻</div>
+          <h3>MacBook Pro M4 Max full options</h3>
+          <p class="card-description">Je ne m'attarde pas trop là dessus, personne ne va me le prendre.</p>
+          <a href="https://www.apple.com/fr/shop/buy-mac/macbook-pro/14-pouces-noir-sidéral-verre-d-écran-standard-puce-apple-m4-max-avec-cpu-14-cœurs-gpu-32-cœurs-neural-engine-16-cœurs-36-go-de-mémoire-1to" target="_blank" class="card-link">Voir le produit</a>
+        </div>
+      </div>
+
+      <!-- PLAQUE INDUCTION -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">🔥</div>
+          <h3>Plaque à induction portable</h3>
+          <p class="card-description">A coupler avec ma poêle De Buyer. Je mets la plaque sur la fenêtre de la cuisine, et mes oreilles n'entendront plus "ça pue c'est une infection !"</p>
+          <div class="free-choice">Plaque à induction portable</div>
+        </div>
+      </div>
+
+      <!-- TABLE VEVOR -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">🪑</div>
+          <h3>Table pliante suspendue VEVOR</h3>
+          <p class="card-description">Y a une logique dans cette liste... C'est pour poser la plaque de cuisson sus-citée</p>
+          <a href="https://www.amazon.fr/VEVOR-Suspendue-Balustrades-Ext%C3%A9rieur-Garde-corps/dp/B0DX63BQG4?source=ps-sl-shoppingads-lpcontext&psc=1&smid=A1X6FK5RDHNB96#averageCustomerReviewsAnchor" target="_blank" class="card-link">Voir le produit</a>
+        </div>
+      </div>
+
+      <!-- POLO RALPH LAUREN -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">👞</div>
+          <h3>Polo Ralph Lauren - MERTON SUEDE VENETIAN LOAFER</h3>
+          <p class="card-description">Pour être le Tony Montana de Pusignan... Tony Montagnard</p>
+          <a href="https://www.zalando.fr/polo-ralph-lauren-merton-suede-venetian-loafer-mocassins-newport-navy-po212c02u-k11.html?ssku=PO212C02U-K110120000&lang=fr&otid=default" target="_blank" class="card-link">Voir le produit</a>
+          <div class="special-note">Taille 45 - Newport Navy</div>
+        </div>
+      </div>
+
+      <!-- MOULIN PEUGEOT -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">⚙️</div>
+          <h3>Moulin à poivre Peugeot 22cm</h3>
+          <p class="card-description">J'espère que c'est plus fiable que le 1.2L PureTech</p>
+          <a href="https://www.cuisineaddict.com/achat-moulin-a-poivre-paris-u-select-22-cm-chocolat-peugeot-14733.htm" target="_blank" class="card-link">Voir le produit</a>
+        </div>
+      </div>
+
+      <!-- THERMOMÈTRE -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">🌡️</div>
+          <h3>Thermomètre de cuisson</h3>
+          <p class="card-description">J'en avais un de Temu mais il m'indiquait qu'il faisait 61°C en température ambiante alors je ne lui faisais pas trop confiance</p>
+          <a href="https://www.amazon.fr/ThermoPro-Thermom%C3%A8tre-Num%C3%A9rique-R%C3%A9tro%C3%A9clair%C3%A9-Inoxydable/dp/B074XND445?source=ps-sl-shoppingads-lpcontext&psc=1&smid=A3OQHHR0H3SMZM" target="_blank" class="card-link">Voir le produit</a>
+        </div>
+      </div>
+
+      <!-- SSD -->
+      <div class="card scroll-reveal">
+        <div class="card-content">
+          <div class="card-icon">💾</div>
+          <h3>SanDisk Portable SSD 1 To</h3>
+          <p class="card-description">J'ai une vie toute entière à stocker dessus...</p>
+          <a href="https://www.amazon.fr/dp/B0C5JQ68FY?th=1" target="_blank" class="card-link">Voir le produit</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>🎯 Liste générée avec précision pour John — Joyeux Noël 2025 ! 🎯</p>
+    </footer>
+  </div>
+
+  <script>
+    // Animation au scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -80px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Parallax effect sur le header
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const header = document.querySelector('header');
+      if (header) {
+        header.style.transform = `translateY(${scrolled * 0.4}px)`;
+        header.style.opacity = Math.max(0, 1 - (scrolled / 600));
+      }
+    });
+
+    // Effet de particules au mouvement de souris
+    document.addEventListener('mousemove', (e) => {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const angleX = (y - centerY) / 20;
+          const angleY = (centerX - x) / 20;
+          
+          card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-8px) scale(1.02)`;
+        }
+      });
+    });
+
+    document.addEventListener('mouseleave', () => {
+      document.querySelectorAll('.card').forEach(card => {
+        card.style.transform = '';
+      });
+    });
+  </script>
+</body>
+</html>
